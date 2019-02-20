@@ -1,35 +1,26 @@
-// from data.js
 var tableData = data;
-theTable=d3.select('#ufo-table');
+var tbody = d3.select('tbody');
+var filterTBox = d3.select('#datetime');
 var filterBtn = d3.select('#filter-btn');
-var filterTBox= d3.select('#datetime');
-// YOUR CODE HERE!
-/* load data */
 
-function loadData(filterV){
-    if (filterV===""){
-        tableData.forEach(row => {
-            var newrow = theTable.append('tr');
-            Object.values(row).forEach( x=> newrow.append('td').text(x));
-        });
-    }else{
 
-    }
+function initialLoad(){
+    tableData.forEach(row => {
+        var newrow= tbody.append('tr');
+        Object.values(row).forEach(x=> newrow.append('td').text(x)); 
+    });
 }
 
 function handleFilter(){
-    //get filter text
-    filterVal=filterTBox.property("value");
-    var filteredCols= data.filter(x => datetime == filterVal)
-   
+    d3.event.preventDefault();
+    var filterVal = filterTBox.property('value');
+    var filteredCols = data.filter(x=> x.datetime == filterVal);
+    d3.select('tbody').selectAll('tr').remove();
+    filteredCols.forEach(row =>{
+        var newrow = tbody.append('tr');
+        Object.values(row).forEach( x  => newrow.append('td').text(x));
+    });
 }
-// bind button to func
-filterBtn.on("click", handleFilter);
 
-/*
-function handleChange() {
-    var reversed = reverseString(this.value);
-    output.text(reversed);
-}
-*/ 
-loadData("");
+initialLoad();
+filterBtn.on('click',handleFilter);
