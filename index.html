@@ -30,18 +30,30 @@
         <div class="col-md-2">
           <aside class="filters">
             <div class="panel panel-default">
-              <div class="panel-heading">Filter Search</div>
+              <div class="panel-heading">Filter</div>
               <div class="panel-body">
+                    <div class="form-group">
+                            <label for="filterTypeOpts">Filter Types</label>
+                            <select class="form-control" id="filterTypeOpts">
+                              <option>date</option>
+                              <option>city</option>
+                              <option>state</option>
+                              <option>country</option>
+                              <option>shape</option>
+                            </select>
+                          </div>
                 <form>
                   <div class="form-group">
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
-                        <label for="date">Enter a Date</label>
+                        <label for="date">Value</label>
                         <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
                       </li>
                     </ul>
                   </div>
-                  <button id="filter-btn" type="submit" class="btn btn-default">Filter Table</button>
+                  
+                  
+                  <button id="filter-btn" type="submit" class="btn btn-default">GO!</button>  
                 </form>
               </div>
             </div>
